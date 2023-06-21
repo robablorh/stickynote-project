@@ -1,0 +1,74 @@
+.sticky-note {
+  width: 300px;
+  padding: 20px;
+  background-color: #FFFFCC;
+  border: 1px solid #FFCC66;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  margin-left: 30rem;
+  margin-top: 6rem;
+  
+  
+}
+
+
+
+.input-field {
+  padding: 10px;
+  width: 90%;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.textarea-field {
+  padding: 10px;
+  width: 90%;
+  height: 100px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+.btncreate{
+  
+    display: inline-block;
+    padding: 12px;
+    border: none;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .btncreate:hover {
+    transform: scale(1.1);
+  }
+  
+  
+
+  
+
+
+
+
+
+
