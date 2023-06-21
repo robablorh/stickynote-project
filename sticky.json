@@ -1,0 +1,53 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "First Note",
+      "date": "21june2023",
+      "description": "My first sticky note for action",
+      "image": "./public/img/luigi.png"
+    },
+    {
+      "id": 2,
+      "title": "First Note",
+      "date": "21june2023",
+      "description": "My first sticky note for action",
+      "image": "./public/img/luigi.png"
+    },
+    {
+      "id": 3,
+      "title": "First Note",
+      "date": "21june2023",
+      "description": "My first sticky note for action",
+      "image": "./public/img/luigi.png"
+    },
+    {
+      "id": "a8fe838c-653b-4b06-9d28-eca6b12e7566",
+      "title": "sasdvas",
+      "date": "2023-06-21",
+      "description": "advSv",
+      "image": "zsxcvsxc"
+    },
+    {
+      "id": "f6b89fd0-6e17-41b5-bf62-3db5cf6b55d2",
+      "title": "Svas",
+      "date": "2023-06-21",
+      "description": "svasfvas",
+      "image": "asdfasdf"
+    },
+    {
+      "id": "5c6c924a-cd00-4566-baae-a42cb1199d71",
+      "title": "svczscv",
+      "date": "2023-06-21",
+      "description": "zxcvzxc",
+      "image": "asfbsdfbs"
+    },
+    {
+      "id": "c9daa43b-e850-4287-ad56-b6bd001618d9",
+      "title": "aCAd",
+      "date": "2023-06-07",
+      "description": "aDa",
+      "image": "ADFadf"
+    }
+  ]
+}
