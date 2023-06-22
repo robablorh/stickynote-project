@@ -17,10 +17,10 @@ const EditStickyForm = ({ onClose, task }) => {
     const newUpdate = {id: taskid, title, date, description, image}
 
     try {
-        const res = await fetch(`http://localhost:8000/tasks/${taskid}`, {
+        const res = await fetch(`http://localhost:3000/tasks/${taskid}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(newUpdate),
+          body: JSON.stringify(newUpdate)
         });
 
         if(res.ok){

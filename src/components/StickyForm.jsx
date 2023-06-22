@@ -17,7 +17,7 @@ export const StickyForm = ({ onClose }) => {
     const newSticky = { id: uuid(), title, date, description, image };
 
     try {
-      const response = await fetch("http://localhost:8000/tasks", {
+      const response = await fetch("http://localhost:3000/tasks", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newSticky),

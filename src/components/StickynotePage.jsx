@@ -47,6 +47,6 @@ export const StickynotePage = () => {
 }
 
 export const taskLoaders = async () => {
-  const res = await fetch("http://localhost:8000/tasks");
+  const res = await fetch("http://localhost:3000/tasks");
   return res.json()
 }

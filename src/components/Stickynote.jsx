@@ -30,6 +30,26 @@ import EditStickyForm from "./EditStickyForm";
 const Stickynote = ({ task }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+
+  const handleDelete = async (taskId) => {
+    try {
+      const response = await fetch(`http://localhost:3000/tasks/${taskId}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+      
+        console.log("Deleted successfully");
+      }
+      else{
+        console.log("Error while deleting:", response.status);
+     
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Center py={6}>
       <Box
@@ -87,7 +107,7 @@ const Stickynote = ({ task }) => {
           >
             Edit
           </Button>
-          <Button
+          <Button   onClick={() => handleDelete(task.id)} 
             flex={1}
             fontSize={"sm"}
             rounded={"full"}
@@ -117,3 +137,4 @@ const Stickynote = ({ task }) => {
 };
 
 export default Stickynote;
+
