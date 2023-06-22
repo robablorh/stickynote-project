@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import {
   Heading,
@@ -8,9 +9,27 @@ import {
   Stack,
   Button,
   useColorModeValue,
+  Flex,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  useDisclosure
 } from "@chakra-ui/react";
 
+import { useSelector, useDispatch } from "react-redux";
+import { createSticky } from "../reduxtk/slice";
+import { useEffect, useState } from "react";
+import { StickyForm } from "./StickyForm";
+import EditStickyForm from "./EditStickyForm";
+
+
+
+
 const Stickynote = ({ task }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Center py={6}>
       <Box
@@ -22,27 +41,30 @@ const Stickynote = ({ task }) => {
         p={6}
         textAlign={"center"}
       >
-        <Avatar
-          size={"xl"}
-          src={task.image}
-          alt={"Avatar Alt"}
-          mb={4}
-          pos={"relative"}
-          _after={{
-            content: '""',
-            w: 4,
-            h: 4,
-            bg: "green.300",
-            border: "2px solid white",
-            rounded: "full",
-            pos: "absolute",
-            bottom: 0,
-            right: 3,
-          }}
-        />
-        <Heading as="h3" fontSize={"2xl"} fontFamily={"body"}>
-          {task.title}
-        </Heading>
+        <Flex alignItems="center" gap="4">
+          <Avatar
+            size={"md"}
+            src={task.image}
+            alt={"Avatar Alt"}
+            mb={4}
+            pos={"relative"}
+            _after={{
+              content: '""',
+              w: 2,
+              h: 2,
+              bg: "green.300",
+              border: "2px solid white",
+              rounded: "full",
+              pos: "absolute",
+              bottom: 0,
+              right: 3,
+            }}
+          />
+          <Heading as="h3" fontSize={"2xl"} fontFamily={"body"}>
+            {task.title}
+          </Heading>
+        </Flex>
+
         <Text
           textAlign={"center"}
           color={useColorModeValue("gray.700", "gray.400")}
@@ -61,6 +83,7 @@ const Stickynote = ({ task }) => {
             _focus={{
               bg: "gray.200",
             }}
+            onClick={onOpen}
           >
             Edit
           </Button>
@@ -73,13 +96,22 @@ const Stickynote = ({ task }) => {
             boxShadow={
               "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
             }
-            _hover={{bg: "blue.500",}}
-            _focus={{bg: "blue.500",}}
+            _hover={{ bg: "blue.500" }}
+            _focus={{ bg: "blue.500" }}
           >
             Delete
           </Button>
         </Stack>
       </Box>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Makes some changes</ModalHeader>
+          <ModalCloseButton />
+          <EditStickyForm onClose={onClose} task={task}/>
+        </ModalContent>
+      </Modal>
     </Center>
   );
 };

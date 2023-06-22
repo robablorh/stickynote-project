@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react"
 import {v4 as uuid} from "uuid"
-import { useDispatch, useSelector } from "react-redux";
-import { createSticky } from "../reduxtk/slice";
+
 
 
 import { Button, FormControl, FormLabel, Input, ModalBody, ModalFooter, Textarea} from "@chakra-ui/react";
@@ -11,34 +10,42 @@ export const StickyForm = ({ onClose }) => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("")
+  const [image, setImage] = useState("");
 
-  const dispatch = useDispatch()
-  const stickyStore = useSelector((store) => store.tasks.tasks);
-  console.log(stickyStore);
+  const handleSave = async (e) => {
+    e.preventDefault();
+    const newSticky = { id: uuid(), title, date, description, image };
 
-  const handleSave = async (e) =>{
-    e.preventDefault()
-    const newSticky = {id: uuid(), title, date, description, image}
-    
     try {
-       const response = await fetch("http://localhost:8000/tasks", {
-         method: "POST",
-         headers: { "Content-Type": "application/json" },
-         body: JSON.stringify(newSticky)
-       });
+      const response = await fetch("http://localhost:8000/tasks", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newSticky),
+      });
 
-       if(response.ok){
-        dispatch(createSticky(newSticky));
-        console.log("Saved successfully")
-       }else{
-        console.log("Error while saving: ", response.status)
-       }
+      //const data = await response.json()
 
+      if (response.ok) {
+        console.log("Saved successfully");
+      } else {
+        console.log("Error while saving: ", response.status);
+      }
     } catch (error) {
-      console.Error(error)
+      console.Error(error);
     }
-  }
+    onClose();
+  };
+
+  /**
+   * The code above could be writen like this with axios
+   * try{
+   *  const data  = await axios.post("http://localhost:8000/tasks", newSticky)
+   *  console.log(data, "Sticky note saved successfully")
+   * }catch(error){
+   *   console.error("Error saving sticky note:", error)
+   * }
+   *
+   */
 
   return (
     <>
