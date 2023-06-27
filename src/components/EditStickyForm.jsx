@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Button, FormControl, FormLabel, Input, ModalBody, ModalFooter, Textarea} from "@chakra-ui/react";
-
+import { editSticky } from "../reduxtk/slice";
+import { useDispatch } from "react-redux";
 
 const EditStickyForm = ({ onClose, task }) => {
   const [title, setTitle] = useState(task.title);
@@ -9,29 +10,15 @@ const EditStickyForm = ({ onClose, task }) => {
   const [description, setDescription] = useState(task.description);
   const [image, setImage] = useState(task.image);
 
+  const dispatch = useDispatch()
 
 
 
 
   const handleupdate = async (taskid) => {
     const newUpdate = {id: taskid, title, date, description, image}
-
-    try {
-        const res = await fetch(`http://localhost:8000/tasks/${taskid}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(newUpdate),
-        });
-
-        if(res.ok){
-            console.log("Data updated successfully")
-        }else{
-            console.log("Error during update")
-        }
-        
-    } catch (error) {
-        console.error(error)
-    }
+    dispatch(editSticky(newUpdate))
+    
     onClose()
   }
 

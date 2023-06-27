@@ -15,7 +15,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalCloseButton,
-  useDisclosure
+  useDisclosure,
 } from "@chakra-ui/react";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -24,11 +24,9 @@ import { useEffect, useState } from "react";
 import { StickyForm } from "./StickyForm";
 import EditStickyForm from "./EditStickyForm";
 
-
-
-
 const Stickynote = ({ task }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
 
   return (
     <Center py={6}>
@@ -109,7 +107,7 @@ const Stickynote = ({ task }) => {
         <ModalContent>
           <ModalHeader>Makes some changes</ModalHeader>
           <ModalCloseButton />
-          <EditStickyForm onClose={onClose} task={task}/>
+          <EditStickyForm onClose={onClose} task={task} />
         </ModalContent>
       </Modal>
     </Center>
