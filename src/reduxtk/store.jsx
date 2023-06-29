@@ -11,9 +11,7 @@ const persistConfig = {
   storage
 }
 
-// const stickyReducer = {
-//   tasks: stickySlice.reducer
-// };
+
 
 const stickyReducer = combineReducers({tasks: stickySlice})
 
