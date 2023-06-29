@@ -23,9 +23,19 @@ import { createSticky } from "../reduxtk/slice";
 import { useEffect, useState } from "react";
 import { StickyForm } from "./StickyForm";
 import EditStickyForm from "./EditStickyForm";
+import { Dispatch } from "react";
+import { deletesticky } from "../reduxtk/slice";
 
 const Stickynote = ({ task }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+ 
+  const dispatch = useDispatch();
+
+  const handleDelete = (taskId) =>{
+    dispatch(deletesticky(taskId))
+
+
+  }
   return (
     <Center py={6}>
       <Box
@@ -83,7 +93,7 @@ const Stickynote = ({ task }) => {
           >
             Edit
           </Button>
-          <Button   
+          <Button   onClick={() => handleDelete(task.id)}
             flex={1}
             fontSize={"sm"}
             rounded={"full"}

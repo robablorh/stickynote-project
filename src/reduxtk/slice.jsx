@@ -22,11 +22,15 @@ export const stickySlice = createSlice({
         toupdate.image = image
       }
 
+    },
+    deletesticky: (state, {payload}) => {
+      state.tasks = state.tasks.filter( task=> task.id !== payload)
     }
+
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { createSticky, editSticky } = stickySlice.actions;
+export const { createSticky, editSticky, deletesticky} = stickySlice.actions;
 
 export default stickySlice.reducer;
