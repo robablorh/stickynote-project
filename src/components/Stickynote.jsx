@@ -15,7 +15,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalCloseButton,
-  useDisclosure
+  useDisclosure,
 } from "@chakra-ui/react";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -24,32 +24,8 @@ import { useEffect, useState } from "react";
 import { StickyForm } from "./StickyForm";
 import EditStickyForm from "./EditStickyForm";
 
-
-
-
 const Stickynote = ({ task }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-
-  const handleDelete = async (taskId) => {
-    try {
-      const response = await fetch(`http://localhost:3000/tasks/${taskId}`, {
-        method: "DELETE",
-      });
-
-      if (response.ok) {
-      
-        console.log("Deleted successfully");
-      }
-      else{
-        console.log("Error while deleting:", response.status);
-     
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <Center py={6}>
       <Box
@@ -107,7 +83,7 @@ const Stickynote = ({ task }) => {
           >
             Edit
           </Button>
-          <Button   onClick={() => handleDelete(task.id)} 
+          <Button   
             flex={1}
             fontSize={"sm"}
             rounded={"full"}
@@ -129,7 +105,7 @@ const Stickynote = ({ task }) => {
         <ModalContent>
           <ModalHeader>Makes some changes</ModalHeader>
           <ModalCloseButton />
-          <EditStickyForm onClose={onClose} task={task}/>
+          <EditStickyForm onClose={onClose} task={task} />
         </ModalContent>
       </Modal>
     </Center>
