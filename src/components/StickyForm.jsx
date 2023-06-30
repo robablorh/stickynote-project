@@ -55,7 +55,7 @@ export const StickyForm = ({ onClose }) => {
         </FormControl>
 
         <FormControl mt={4}>
-          <FormLabel>Description</FormLabel>
+          <FormLabel>Date</FormLabel>
           <Input
             type="date"
             name="date"
