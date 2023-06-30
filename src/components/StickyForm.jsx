@@ -12,8 +12,14 @@ export const StickyForm = ({ onClose }) => {
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
+  const [err, setErr] = useState("");
 
   const dispatch = useDispatch()
+
+  if (title.trim() === "" || description.trim() === "" || date.trim() === "") {
+    setErr("The title, description and date fields cannot be empty");
+    return;
+  }
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -66,6 +72,7 @@ export const StickyForm = ({ onClose }) => {
           />
         </FormControl>
       </ModalBody>
+      <h3 style={{ color: "red" }}>{err}</h3>
 
       <ModalFooter>
         <Button colorScheme="blue" mr={3} onClick={handleSave}>
