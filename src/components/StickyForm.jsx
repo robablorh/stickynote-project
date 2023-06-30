@@ -12,11 +12,19 @@ export const StickyForm = ({ onClose }) => {
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
+  const [err, setErr] = useState();
 
   const dispatch = useDispatch()
 
+
   const handleSave = (e) => {
     e.preventDefault();
+
+    if (title.trim() === "" || description.trim() === "" || date.trim() === "") {
+    setErr("Title, Description and date cannot be empty");
+    return;
+  }
+
     const newSticky = { id: uuid(), title, date, description, image };
     dispatch(createSticky(newSticky));
     onClose();
@@ -47,7 +55,7 @@ export const StickyForm = ({ onClose }) => {
         </FormControl>
 
         <FormControl mt={4}>
-          <FormLabel>Description</FormLabel>
+          <FormLabel>Date</FormLabel>
           <Input
             type="date"
             name="date"
@@ -65,6 +73,9 @@ export const StickyForm = ({ onClose }) => {
             onChange={(e) => setImage(e.target.value)}
           />
         </FormControl>
+
+        <h3 style={{color: 'red'}}>{err}</h3>
+
       </ModalBody>
 
       <ModalFooter>

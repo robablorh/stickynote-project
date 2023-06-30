@@ -9,13 +9,20 @@ const EditStickyForm = ({ onClose, task }) => {
   const [date, setDate] = useState(task.date);
   const [description, setDescription] = useState(task.description);
   const [image, setImage] = useState(task.image);
+  const [err, setErr] = useState();
 
   const dispatch = useDispatch()
 
-
+    
 
 
   const handleupdate = async (taskid) => {
+
+    if (title.trim() === "" || description.trim() === "" || date.trim() === "") {
+    setErr("Title, Description and date cannot be empty");
+    return;
+  }
+    
     const newUpdate = {id: taskid, title, date, description, image}
     dispatch(editSticky(newUpdate))
     onClose()
@@ -45,7 +52,7 @@ const EditStickyForm = ({ onClose, task }) => {
         </FormControl>
 
         <FormControl mt={4}>
-          <FormLabel>Description</FormLabel>
+          <FormLabel>Date</FormLabel>
           <Input
             type="date"
             name="date"
@@ -63,6 +70,7 @@ const EditStickyForm = ({ onClose, task }) => {
             onChange={(e) => setImage(e.target.value)}
           />
         </FormControl>
+        <h3 style={{ color: "red" }}>{err}</h3>
       </ModalBody>
 
       <ModalFooter>
