@@ -9,10 +9,14 @@ const EditStickyForm = ({ onClose, task }) => {
   const [date, setDate] = useState(task.date);
   const [description, setDescription] = useState(task.description);
   const [image, setImage] = useState(task.image);
+  const [err, setErr] = useState("")
 
   const dispatch = useDispatch()
 
-
+    if(title.trim() === "" || description.trim() === "" || date.trim() === ""){
+      setErr("The title, description and date fields cannot be empty")
+      return
+    }
 
 
   const handleupdate = async (taskid) => {
@@ -64,6 +68,7 @@ const EditStickyForm = ({ onClose, task }) => {
           />
         </FormControl>
       </ModalBody>
+      <h3 style={{color: "red"}}>{err}</h3>
 
       <ModalFooter>
         <Button colorScheme="blue" mr={3} onClick={() => handleupdate(task.id)}>
